@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /**
+    * 刮刮奖
+    */
+    .scrapeLottoBox{
+      width: 285px;
+      height: 120px;
+      background: url('./watermark.jpg') center/100% no-repeat;
+    }
+    .scrapeLottoBox-btn{
+      font-size: 14px;
+      line-height: 20px;
+      color: #fff;
+      width: 50px;
+      position: absolute;
+      right: 26px;
+      top: 39px;
+      text-align: center;
+    }
+    .scrapeLottoBox-price{
+      color: #f51e55;
+      width: 150px;
+      text-align: center;
+      position: absolute;
+      left: 30px;
+      top: 25px;
+      font-size: 16px;
+    }
+    .scrapeLottoBox-price>span{
+      font-size: 24px;
+      line-height: 67px;
+      font-weight: 700;
+    }
+    .scrapeLottoBox>.scrapeLottoCanvas{
+      position: absolute;
+      left: 30px;
+      top: 25px;
+    }
+    .scrapeLottoBox * {
+        user-select: none;
+    }
+
+    /* 样式 */
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    body {
+        background-image: url('./tF5x7d4j0Y.jpg');
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .logo {
+      width: 220px;
+      position: absolute;
+      top: 2%;
+      left: 2%;
+    }
+    .scrapeLottoBox {
+      float: left;
+      position: relative;
+      margin: 20px;
+    }
+    .clear {
+      clear: both;
+    }
+    .play-box {
+      width: 975px;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      height: 475px;
+    }
+  </style>
+</head>
+<body>
+  <img class="logo"  src="./logo.png">
+  <div class="play-box">
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="scrapeLottoBox">
+      <div class="scrapeLottoBox-btn">Scratch Card</div>
+      <div class="scrapeLottoBox-price"><span></span></div>
+      <!-- 蒙层 -->
+      <canvas class="scrapeLottoCanvas" width="150" height="70"></canvas>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+  
+  <script>
+    let jisngli = ["礼品券一份", "红包12.3元", "礼品券一份", "礼品券一份", "礼品券一份", "礼品券一份", "礼品券一份", "礼品券一份", "礼品券一份", "精美礼品一份"]
+    function randomNum (minNum,maxNum){ 
+      switch(arguments.length){ 
+        case 1: 
+          return parseInt(Math.random()*minNum+1,10); 
+        break; 
+        case 2: 
+          return parseInt(Math.random()*(maxNum-minNum+1)+minNum,10); 
+        break; 
+        default: 
+          return 0; 
+        break;
+      }
+    }
+    /**
+     * 创建刮刮奖
+     */
+    document.querySelectorAll(".scrapeLottoBox-price").forEach(element => {
+       if (element.querySelector('span')) {
+         element.querySelector('span').innerText = jisngli[parseInt(randomNum(0, jisngli.length - 1))]
+       }
+    });
+     document.querySelectorAll(".scrapeLottoCanvas").forEach(element => {
+      createScrapeLotto(element)
+    });
+    function createScrapeLotto(myCanvas) {
+      // 搭建环境
+      let cxt = myCanvas.getContext("2d");
+      cxt.globalAlpha = 1;
+      cxt.fillStyle = "#ccc";
+      cxt.fillRect(0, 0, 300, 140);
+      // 文本
+      cxt.fillStyle = "#000";
+      cxt.font = "18px 微软雅黑";
+      cxt.textAlign = "center";
+      cxt.textBaseline = "middle";
+      cxt.fillText('Scratch Here', 73, 35, 100);
+      
+      // pc
+      let flag = false;
+      myCanvas.addEventListener('mousedown', function (e) {
+        flag = true;
+        drawArc(e)
+      })
+      myCanvas.addEventListener('mousemove', function (e) {
+        if (flag == true) {
+          drawArc(e)
+        }
+      })
+      myCanvas.addEventListener('mouseup', function () {
+        flag = false;
+        calcArea();
+      })
+      // wap
+      myCanvas.addEventListener('touchstart', function (e) {
+        flag = true;
+        drawArc(e)
+      })
+      myCanvas.addEventListener('touchmove', function (e) {
+        if (flag == true) {
+          drawArc(e)
+        }
+      })
+      myCanvas.addEventListener('touchend', function () {
+        flag = false;
+        calcArea();
+      })
+
+      // 绘画区域
+      function drawArc(e) {
+        var canvasPos = myCanvas.getBoundingClientRect();
+        var pageScrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        var pageScrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+        var mouseX = (e.pageX || e.targetTouches[0].pageX) - canvasPos.left - pageScrollLeft;
+        var mouseY = (e.pageY || e.targetTouches[0].pageY) - canvasPos.top - pageScrollTop;
+        cxt.globalCompositeOperation = "destination-out";
+        cxt.beginPath();
+        cxt.fillStyle = "white";
+        cxt.moveTo(mouseX, mouseY);
+        cxt.arc(mouseX, mouseY, 12, 0, 2 * Math.PI);
+        cxt.fill();
+      }
+
+      // 计算区域
+      function calcArea() {
+        var myImg = cxt.getImageData(0, 0, myCanvas.width, myCanvas.height);
+        var num = 0;
+        var max = myImg.data.length / 4;
+        for (var i = 0; i < myImg.data.length; i += 4) {
+          if (myImg.data[i + 3] == 0) {
+            num++;
+          }
+        }
+        if (num >= max * 0.3) {
+          myCanvas.remove()
+        }
+      }
+    }
+  </script>
+</body>
+</html>
